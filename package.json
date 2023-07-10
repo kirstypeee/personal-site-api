@@ -37,9 +37,9 @@
     "typescript": "^5.1.6"
   },
   "_moduleAliases": {
-    "@model": "dist/model",
-    "@routes": "dist/routes",
-    "@shared": "dist/shared",
-    "@typedef": "dist/typedef"
+    "@model": "./dist/model",
+    "@routes": "./dist/routes",
+    "@shared": "./dist/shared",
+    "@typedef": "./dist/typedef"
   }
 }
