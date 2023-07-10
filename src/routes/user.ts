@@ -1,8 +1,7 @@
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { Request, Response, Router } from "express";
 
-import { isEmpty } from "lodash";
-import userRepository from "@model/userRepository";
+import userRepository from "../model/userRepository";
 
 // Init router and path
 const router = Router();
