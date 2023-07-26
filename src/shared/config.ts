@@ -16,4 +16,6 @@ export default {
   nodeEnv: getRequiredEnv("NODE_ENV"),
   mongoUrl: getRequiredEnv("MONGO_URL"),
   mongoDbName: getRequiredEnv("MONGO_DB_NAME"),
+  githubKey: getRequiredEnv("GITHUB_KEY"),
+  githubUser: getRequiredEnv("GITHUB_USERNAME"),
 };
