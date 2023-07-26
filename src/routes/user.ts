@@ -13,8 +13,8 @@ router.post("/", async (req: Request, res: Response) => {
     res.status(StatusCodes.BAD_REQUEST).send(ReasonPhrases.BAD_REQUEST);
   }
   try {
-    const user = await userRepository.createUser({ name, company });
-    return res.status(StatusCodes.OK).send(user);
+    await userRepository.createUser({ name, company });
+    return res.status(StatusCodes.OK).send({ name, company });
   } catch (e) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ error: e });
   }

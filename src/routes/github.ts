@@ -3,6 +3,7 @@ import { Request, Response, Router } from "express";
 import { StatusCodes } from "http-status-codes";
 import axios from "axios";
 import config from "../shared/config";
+import githubContributionsRepository from "../model/githubContributionsRepository";
 
 // Init router and path
 const router = Router();
@@ -46,9 +47,15 @@ const getContributions = async () => {
 router.get("/contributions", async (req: Request, res: Response) => {
   try {
     const data = await getContributions();
+    await githubContributionsRepository.updateContributions(data.data);
     return res.status(StatusCodes.OK).send(data);
   } catch (e) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ error: e });
+    try {
+      const data = await githubContributionsRepository.getContributions();
+      return res.status(StatusCodes.OK).send({ data });
+    } catch (e) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ error: e });
+    }
   }
 });
 

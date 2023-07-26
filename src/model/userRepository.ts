@@ -11,7 +11,11 @@ class UserRepository extends BaseMongoRepository<MongoUser> {
 
   async createUser(user: User): Promise<void> {
     const collection = await this.getCollection();
-    await collection.insertOne(user);
+    await collection.updateOne(
+      { name: user.name, company: user.company },
+      { $inc: { visits: 1 } },
+      { upsert: true }
+    );
   }
 }
 
